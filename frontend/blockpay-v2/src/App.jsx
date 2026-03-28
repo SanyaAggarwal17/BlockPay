@@ -52,7 +52,7 @@ function App() {
   useEffect(() => {
     const fetchStats = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/stats/global');
+        const res = await fetch('https://blockpay-mgu2.onrender.com/api/stats/global');
         const data = await res.json();
         
         // We calculate a dynamic "Top %" based on user count for extra "Oomph"
@@ -109,7 +109,7 @@ function App() {
 
   const fetchUserVaults = async (walletAddress) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/vaults/${walletAddress}`)
+      const response = await fetch(`https://blockpay-mgu2.onrender.com/api/vaults/${walletAddress}`)
       const data = await response.json()
       setVaults(data)
     } catch (error) {
@@ -119,7 +119,7 @@ function App() {
 
   const fetchTransactionHistory = async (walletAddress) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/transactions/${walletAddress}`);
+      const response = await fetch(`https://blockpay-mgu2.onrender.com/api/transactions/${walletAddress}`);
       const data = await response.json();
       setTransactions(data);
     } catch (error) {
@@ -139,7 +139,7 @@ function App() {
       await tx.wait()
       const latestId = await contract.planCount()
       
-      await fetch('http://localhost:5000/api/vaults', {
+      await fetch('https://blockpay-mgu2.onrender.com/api/vaults', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userWallet: account, planId: Number(latestId), vaultName: vaultName, depositAmount: deposit })
@@ -390,7 +390,7 @@ function App() {
               <div className="flex items-baseline gap-2">
                 <span className="text-5xl font-mono font-black text-white tracking-tighter">
                   {parseFloat(globalStats.burnedEth || 0).toFixed(4)}
-                </span>
+              </span>
                 <span className="text-xl font-bold text-rose-500">ETH</span>
               </div>
               

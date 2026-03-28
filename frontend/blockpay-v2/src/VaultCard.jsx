@@ -113,7 +113,7 @@ const handleWithdraw = async () => {
       await tx.wait();
 
       // 🚀 NEW: Log the withdrawal to the Backend Ledger
-      await fetch('http://localhost:5000/api/transactions', {
+      await fetch('https://blockpay-mgu2.onrender.com/api/transactions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -155,7 +155,7 @@ const handleWithdraw = async () => {
       await tx.wait();
 
       // 🚀 NEW: Log the Emergency Break to the Backend Ledger
-      await fetch('http://localhost:5000/api/transactions', {
+      await fetch('https://blockpay-mgu2.onrender.com/api/transactions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
